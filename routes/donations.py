@@ -14,6 +14,7 @@ router = APIRouter(tags=["Donations"])
 
 @router.post("/donate", response_model=DonationResponse)
 def create_donation(
+    amount: float = Form(...),
     donor_name: Optional[str] = Form(None),
     is_anonymous: bool = Form(False),
     location_id: Optional[int] = Form(None),
