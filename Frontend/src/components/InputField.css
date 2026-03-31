@@ -1,0 +1,97 @@
+.input-field {
+  margin-bottom: var(--space-md);
+}
+
+.input-field__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-field__icon {
+  position: absolute;
+  left: 14px;
+  display: flex;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  z-index: 1;
+  transition: color var(--transition-fast);
+}
+
+.input-field__input {
+  width: 100%;
+  padding: 14px 16px;
+  padding-left: 16px;
+  background: var(--bg-input);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all var(--transition-base);
+}
+
+.input-field__wrapper:has(.input-field__icon) .input-field__input {
+  padding-left: 42px;
+}
+
+.input-field__input:focus {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1), var(--neon-glow-subtle);
+}
+
+.input-field__input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Floating Label */
+.input-field__label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  pointer-events: none;
+  transition: all var(--transition-fast);
+  background: transparent;
+  padding: 0 4px;
+}
+
+.input-field__wrapper:has(.input-field__icon) .input-field__label {
+  left: 42px;
+}
+
+.input-field--active .input-field__label {
+  top: 0;
+  left: 12px !important;
+  font-size: 0.75rem;
+  color: var(--neon-blue);
+  background: var(--bg-secondary);
+  padding: 0 6px;
+}
+
+.input-field--active .input-field__icon {
+  color: var(--neon-blue);
+}
+
+/* Error state */
+.input-field--error .input-field__input {
+  border-color: var(--error);
+}
+
+.input-field--error .input-field__label {
+  color: var(--error);
+}
+
+.input-field__error {
+  display: block;
+  color: var(--error);
+  font-size: 0.78rem;
+  margin-top: 6px;
+  padding-left: 4px;
+}
+
+.required {
+  color: var(--error);
+}

@@ -1,0 +1,141 @@
+.data-table-wrapper {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.data-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  position: relative;
+}
+
+/* Scroll indicator shadow */
+.data-table-wrapper {
+  position: relative;
+}
+
+.data-table-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(to left, rgba(10, 14, 26, 0.4), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.data-table-scroll:hover + .data-table-wrapper::after,
+.data-table-wrapper:hover::after {
+  opacity: 1;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 500px; /* Ensure table doesn't get too squeezed */
+}
+
+.data-table thead {
+  background: rgba(0, 100, 200, 0.08);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.data-table th {
+  padding: 14px 18px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 14px 18px;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+}
+
+.data-table tbody tr {
+  transition: background var(--transition-fast);
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(0, 170, 255, 0.04);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table__empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 18px !important;
+  font-style: italic;
+}
+
+/* Amount badge */
+.amount-badge {
+  font-weight: 600;
+  color: var(--neon-blue);
+}
+
+.amount-badge--expense {
+  color: var(--error);
+}
+
+/* Name badge */
+.name-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.name-badge--anonymous {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Date */
+.date-text {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .data-table {
+    min-width: 400px;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 12px 14px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-table {
+    min-width: 350px;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 10px 12px;
+  }
+}
+
